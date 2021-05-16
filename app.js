@@ -69,7 +69,7 @@ app.use((req, res, next) => {
 
 app.get('/', (req, res) => {
 
-    res.render("landuing page");
+    res.send("landuing page");
 })
 
 app.use(productRoutes);
