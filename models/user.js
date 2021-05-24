@@ -12,7 +12,13 @@ const userSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: Product
 
-    }]
+    }],
+    usertype: {
+        type: String
+    },
+    phone: {
+        type: Number
+    }
 })
 
 userSchema.plugin(PassportLocalMongoose);

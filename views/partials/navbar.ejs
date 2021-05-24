@@ -1,32 +1,65 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-dark" style="background-color: #0077b6;">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/products"><i class="fas fa-shopping-basket" style="margin-right: 10px;font-size: 1.7rem;"></i>Shopping Cart</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgb(243, 234, 114);">
+    <div class="container-fluid ">
+        <a class="navbar-brand " href="/products "><i class="fas fa-shopping-basket " style="margin-right: 10px;font-size: 1.7rem; "></i>Shopping Cart</a>
+        <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarTogglerDemo02 " aria-controls="navbarTogglerDemo02 " aria-expanded="false " aria-label="Toggle navigation ">
+        <span class="navbar-toggler-icon "></span>
       </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+
+        <div class="collapse navbar-collapse " id="navbarTogglerDemo02 ">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0 " id="nav">
+                <li class="nav-item ">
+                    <a class="nav-link active" aria-current="page " href="/ ">
+                        <h4>Home</h4>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/products">Products</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="/products/new" tabindex="-1" aria-disabled="true">New</a>
-                </li>
+                <%if(currentUser){ if(currentUser.usertype=="customer"){%>
+                    <li class="nav-item ">
+                        <a class="nav-link active " href="/products ">
+                            <h4>Products</h4>
+                        </a>
+                    </li>
+                    <%} }%>
+                        <%if(currentUser){ if(currentUser.usertype=="retailer"){%>
+
+                            <li class="nav-item ">
+                                <a class="nav-link active " href="/retailer ">
+                                    <h4>My Products</h4>
+                                </a>
+                            </li>
+
+                            <li class="nav-item ">
+                                <a class="nav-link active " href="/products/new ">
+                                    <h4>Add Product</h4>
+                                </a>
+                            </li>
+                            <%} }%>
+
+
+
+
             </ul>
-            <div class="navbar-nav ml-auto">
+            <div class="navbar-nav ml-auto ">
 
                 <%if(!currentUser){%>
-                    <a href="/login" class="nav-link active">Login</a>
+                    <a href="/login " class="nav-link active ">Login</a>
                     <%}else{%>
-                        <a href="#" class="nav-link active">Hello <%=currentUser.username%></a>
-                        <a href="#" class="nav-link active"><i class="fas fa-shopping-cart"></i> 
-                             <sup><span class="badge bg-danger"><%=currentUser.cart.length%></span></sup> 
+                        <a href="# " class="nav-link active ">
+                            <h4 class="text-capitalize">Hello
+                                <%=currentUser.username%>
+                            </h4>
                         </a>
-                        <a href="/logout" class="nav-link active">Logout</a>
-                        <%}%>
+
+                        <%if(currentUser){ if(currentUser.usertype=="customer"){%>
+                            <a href="/user/<%=currentUser._id%>/cart" class="nav-link active ">
+                                <h4 class="fas fa-shopping-cart "></h4>
+                                <sup><span class="badge bg-danger "><%=currentUser.cart.length%></span></sup>
+                            </a>
+                            <%}}%>
+                                <a href="/logout " class="nav-link active ">
+                                    <h4>Logout</h4>
+                                </a>
+
+                                <%}%>
             </div>
 
         </div>

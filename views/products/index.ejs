@@ -1,41 +1,65 @@
-
 <%- include("../partials/header")%>
-<%- include("../partials/navbar")%>
+    <%- include("../partials/navbar")%>
 
 
-<main class="container" style="margin-top: 5rem;">
-    
-    <%- include("../partials/flash")%>
+        <main class="container" style="margin-top: 5rem;">
 
-   
-     <section id="heading"> 
-
-      <h4 class="display-4"><i class="fab fa-shopify" style="margin-right: 20px;"></i>Shopping-Cart</h4>
-
-    </section>
-   
-    <div class="row products">
-
-        <%for(let product of products){%>
-          <div class="col-lg-3 col-md-6 col-sm-6">
-            <div class="card" >
-                <img src="<%= product.img %>" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h5 class="card-title"><%= product.name %></h5>
-                  <p class="card-text"><%= product.desc.substring(0,70) %></p>
-                  <a href="/products/<%= product._id %>" class="btn btn-outline-primary">View Product</a>
-                </div>
-            </div>
-          </div>
-        <%}%>
-     
-    </div>
+            <%- include("../partials/flash")%>
 
 
+                <section id="heading">
+                    <h4 class="display-4"><i class="fab fa-shopify" style="margin-right: 20px;"></i>Shopping-Cart</h4>
+
+                </section>
+                <%if(currentUser){ if(currentUser.usertype=="retailer"){if(products.length!=0){%>
+                    <section id="heading1">
+                        <h2 id="h2"><i style="margin-right: 20px;"></i>Your Products</h2>
+
+                    </section>
+                    <%}else{%>
+                        <div id="noItem">
+                            <h1 id="y">Your Products</h1>
+                            <div id="noProduct">
+                                <div id="x">You Haven't Added Any Product <br> Please Add your Product</div>
+                            </div>
+                            <form action="/products/new" method="GET">
+                                <button id="addProduct">ADD PRODUCT</button>
+                            </form>
+
+                        </div>
+                        <%}}}%>
+
+                            <div class="row products">
+
+                                <%for(let product of products){%>
+                                    <div class="col-lg-3 col-md-6 col-sm-6">
+                                        <div class="card">
+                                            <img src="<%= product.img %>" class="card-img-top" alt="...">
+                                            <div class="card-body">
+                                                <h3 class="card-title">
+                                                    <%= product.name %>
+                                                </h3>
+                                                <p class="card-text">
+                                                    <%= product.desc.substring(0,70) %>...
+                                                </p>
+                                                <br>
+                                                <h4 class="card-title">
+                                                    &#8377;
+                                                    <%= product.price %>
+                                                </h4>
+                                                <a href="/products/<%= product._id %>" class="btn btn-outline-primary" id="btn1">View Product</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <%}%>
+
+                            </div>
 
 
-</div>
-</main>
 
-    
-<%- include("../partials/footer")%>
+
+                            </div>
+        </main>
+
+
+        <%- include("../partials/footer")%>

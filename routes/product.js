@@ -3,12 +3,15 @@ const router = express.Router();
 const Product = require('../models/product');
 const Review = require('../models/review');
 const { isLoggedIn } = require('../middleWare');
+const name = require('./auth');
 
 
 // Display all the products
 router.get('/products', async(req, res) => {
 
     try {
+
+
         const products = await Product.find({});
         res.render('products/index', { products });
     } catch (e) {
@@ -18,6 +21,20 @@ router.get('/products', async(req, res) => {
     }
 })
 
+// Display all the products in retailer
+router.get('/retailer', isLoggedIn, async(req, res) => {
+
+    try {
+
+
+        const products = await Product.find({ username: name.msg });
+        res.render('products/index', { products });
+    } catch (e) {
+        console.log("Something Went Wrong");
+        req.flash('error', 'Cannot Find Products');
+        res.render('error');
+    }
+})
 
 // Get the form for new product
 router.get('/products/new', isLoggedIn, (req, res) => {
@@ -26,12 +43,14 @@ router.get('/products/new', isLoggedIn, (req, res) => {
 
 
 // Create New Product
-router.post('/products', isLoggedIn, async(req, res) => {
+router.post('/retailer', isLoggedIn, async(req, res) => {
 
     try {
-        await Product.create(req.body.product);
+        let prod = req.body.product;
+        prod.username = name.msg;
+        await Product.create(prod);
         req.flash('success', 'Product Created Successfully');
-        res.redirect('/products');
+        res.redirect('/retailer');
     } catch (e) {
         console.log(e.message);
         req.flash('error', 'Cannot Create Products,Something is Wrong');
@@ -86,7 +105,7 @@ router.delete('/products/:id', isLoggedIn, async(req, res) => {
     try {
         await Product.findByIdAndDelete(req.params.id);
         req.flash('success', 'Deleted the product successfully');
-        res.redirect('/products');
+        res.redirect('/retailer');
     } catch (e) {
         console.log(e.message);
         req.flash('error', 'Cannot delete this Product');
@@ -122,6 +141,8 @@ router.post('/products/:id/review', isLoggedIn, async(req, res) => {
     }
 
 })
+
+
 
 
 router.get('/error', (req, res) => {
