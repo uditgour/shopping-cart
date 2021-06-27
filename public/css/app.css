@@ -1,3 +1,11 @@
+    body {
+        background: -webkit-gradient(linear, left bottom, left top, from(#a18cd1), to(#fbc2eb));
+        background: -webkit-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
+        background: -moz-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
+        background: -o-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
+        background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    }
+    
     .products {
         margin: 5px auto;
     }
@@ -57,7 +65,7 @@
     #noItem {
         width: 85%;
         height: 450px;
-        background-color: rgb(237, 201, 247);
+        background-color: rgb(253, 251, 253);
         margin: auto auto;
         border-radius: 10px;
         margin-top: 30px;
@@ -86,7 +94,6 @@
     }
     
     #addProduct {
-        background-color: rgb(223, 64, 255);
         width: 20%;
         height: 50px;
         font-size: 20px;

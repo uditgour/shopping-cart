@@ -21,20 +21,25 @@
                                 <p class="card-text">
                                     <%=product.desc%>
                                 </p>
-                                <%if(currentUser.usertype=="customer"){%>
+                                <% if(!currentUser){%>
                                     <a href="#" class="btn btn-success mt-3">Buy</a>
                                     <form action="/user/<%=product._id%>/cart" method="POST" id="cart">
                                         <button class="btn btn-secondary mt-3 ">Add To Cart</button>
                                     </form>
-                                    <%} else{%>
-                                        <a href="/products/<%=product._id%>/edit" class="btn btn-warning mt-3">Edit</a>
-                                        <div class="mt-3">
-                                            <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
-                                                <button class="btn btn-danger">Delete</button>
+                                    <%}%>
+                                        <%if(currentUser){ if(currentUser.usertype=="customer"){%>
+                                            <a href="#" class="btn btn-success mt-3">Buy</a>
+                                            <form action="/user/<%=product._id%>/cart" method="POST" id="cart">
+                                                <button class="btn btn-secondary mt-3 ">Add To Cart</button>
                                             </form>
-                                        </div>
-                                        <%  }%>
-
+                                            <% }else{%>
+                                                <a href="/products/<%=product._id%>/edit" class="btn btn-warning mt-3">Edit</a>
+                                                <div class="mt-3">
+                                                    <form action="/products/<%=product._id%>?_method=DELETE" method="POST">
+                                                        <button class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                </div>
+                                                <% } }%>
 
                             </div>
                         </div>

@@ -19,31 +19,68 @@
                                         <div class="row row-space">
                                             <div class="col-2">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="text" name="first_name" required>
-                                                    <label class="label--desc">first name</label>
+                                                    <input class="input--style-5 form-control" type="text" name="first_name" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide First Name.
+                                                    </div>
 
                                                 </div>
+
+
 
 
                                             </div>
                                             <div class="col-2">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="text" name="last_name" required>
-                                                    <label class="label--desc">last name</label>
+                                                    <input class="input--style-5 form-control" type="text" name="last_name" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide Last Name.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="form-row">
-                                    <div class="name">Email</div>
+
+                                <div class="form-row m-b-55">
+                                    <div class="name">User Name</div>
                                     <div class="value">
-                                        <div class="input-group">
-                                            <input class="input--style-5" type="email" name="email" required>
+                                        <div class="row row-refine">
+
+                                            <div class="col-9">
+                                                <div class="input-group-desc">
+                                                    <input class="input--style-5 form-control" type="text" pattern="^[a-zA-Z][a-zA-Z0-9_]*$" name="username" id="username" required>
+
+                                                    <div class="invalid-feedback">
+                                                        Must Start With Aphabets and No use of symbol expect underscore
+                                                    </div>
+
+
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+                                <div class="form-row m-b-55">
+                                    <div class="name">Email</div>
+                                    <div class="value">
+                                        <div class="row row-refine">
+
+                                            <div class="col-9">
+                                                <div class="input-group-desc">
+                                                    <input class="input--style-5 form-control" type="text" name="email" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide Email.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="form-row m-b-55">
                                     <div class="name">Phone</div>
                                     <div class="value">
@@ -51,8 +88,10 @@
 
                                             <div class="col-9">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="tel" name="phone" required>
-                                                    <label class="label--desc">Phone Number</label>
+                                                    <input class="input--style-5 form-control" pattern="[6789][0-9]{9}" type="text" name="phone" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide Phone Number.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,8 +105,11 @@
 
                                             <div class="col-9">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="password" name="password" required>
-                                                    <label class="label--desc">Password</label>
+                                                    <input class="input--style-5 form-control" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" type="password" name="password" required>
+
+                                                    <div class="invalid-feedback">
+                                                        must be 8
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,11 +120,11 @@
                                     <label class="label label--block">Register As</label>
                                     <div class="p-t-15">
                                         <label class="radio-container m-r-55">Customer
-                                    <input type="radio"  name="type" value="customer">
+                                    <input type="radio" class="form-control"  name="type" value="customer">
                                     <span class="checkmark"></span>
                                 </label>
                                         <label class="radio-container">Retailer
-                                    <input type="radio" name="type" value="retailer">
+                                    <input type="radio" class="form-control" name="type" value="retailer">
                                     <span class="checkmark"></span>
                                 </label>
                                     </div>

@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     email: {
         type: String,
         required: true,
-        unique: true
     },
     cart: [{
         type: mongoose.Schema.Types.ObjectId,
@@ -18,6 +17,9 @@ const userSchema = new mongoose.Schema({
     },
     phone: {
         type: Number
+    },
+    name: {
+        type: String
     }
 })
 

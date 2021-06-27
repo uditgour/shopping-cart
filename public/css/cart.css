@@ -1,0 +1,39 @@
+#cartImg {
+    width: 30%;
+    height: 250px;
+    margin-top: 50px;
+    margin-left: 335px;
+}
+
+#cartDiv {
+    width: 80%;
+    height: 500px;
+    background-color: white;
+    margin-left: 110px;
+    margin-top: 130px;
+    border-radius: 15px;
+}
+
+#cartTitle {
+    padding-top: 30px;
+    padding-left: 30px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#cartText {
+    margin-left: 380px;
+    margin-top: 5px;
+}
+
+#cartButton {
+    margin-left: 415px;
+    margin-top: 20px;
+    width: 13%;
+    height: 35px;
+    background-color: teal;
+    font-size: 22px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+}

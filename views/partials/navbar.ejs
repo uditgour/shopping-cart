@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgb(243, 234, 114);">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgb(55, 205, 243);">
     <div class="container-fluid ">
         <a class="navbar-brand " href="/products "><i class="fas fa-shopping-basket " style="margin-right: 10px;font-size: 1.7rem; "></i>Shopping Cart</a>
         <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarTogglerDemo02 " aria-controls="navbarTogglerDemo02 " aria-expanded="false " aria-label="Toggle navigation ">
@@ -43,9 +43,9 @@
                 <%if(!currentUser){%>
                     <a href="/login " class="nav-link active ">Login</a>
                     <%}else{%>
-                        <a href="# " class="nav-link active ">
-                            <h4 class="text-capitalize">Hello
-                                <%=currentUser.username%>
+                        <a href="/user/<%=currentUser._id%>/info" class="nav-link active ">
+                            <h4 class="text-capitalize">
+                                <%=currentUser.name%>
                             </h4>
                         </a>
 

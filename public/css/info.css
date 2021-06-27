@@ -1,0 +1,70 @@
+.card-5 .card-heading1 {
+    padding: 20px 0;
+    background: #e97110;
+    -webkit-border-top-left-radius: 10px;
+    -moz-border-radius-topleft: 10px;
+    border-top-left-radius: 10px;
+    -webkit-border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-5 .card-heading1 .title {
+    text-align: left;
+    margin-left: 10px;
+}
+
+#Name {
+    display: inline;
+}
+
+
+/* #value {
+    width: 40%;
+} */
+
+#edit2,
+#edit3 {
+    text-decoration: none;
+    font-size: 20px;
+    padding-left: 170px;
+    display: inline;
+    color: blue;
+}
+
+#edit2,
+#edit3 {
+    cursor: grab;
+}
+
+#edit1 {
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 415px;
+    color: blue;
+}
+
+#edit1:hover {
+    cursor: grab;
+}
+
+#save1 {
+    margin-left: 10px;
+    background-color: rgb(55, 205, 243);
+    width: 70px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: none;
+}
+
+#save2,
+#save3 {
+    margin-left: 10px;
+    background-color: rgb(55, 205, 243);
+    width: 70px;
+    height: 35px;
+    border-radius: 5px;
+    font-size: 20px;
+    display: none;
+}

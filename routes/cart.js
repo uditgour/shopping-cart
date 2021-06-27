@@ -4,6 +4,7 @@ const { isLoggedIn } = require('../middleWare');
 const Product = require('../models/product');
 const User = require('../models/user');
 
+//list of products in cart
 router.get('/user/:userId/cart', isLoggedIn, async(req, res) => {
 
     try {
@@ -16,7 +17,7 @@ router.get('/user/:userId/cart', isLoggedIn, async(req, res) => {
 })
 
 
-
+//adding products to cart
 router.post('/user/:id/cart', isLoggedIn, async(req, res) => {
 
     try {
@@ -28,7 +29,7 @@ router.post('/user/:id/cart', isLoggedIn, async(req, res) => {
 
         await user.save();
         req.flash('success', 'Added to cart successfully')
-        res.redirect(`/user/${req.user._id}/cart`);
+        res.redirect(`/products/${req.params.id}`);
     } catch (e) {
         req.flash('error', 'Unable to get the cart at this moment');
         res.render('error');
