@@ -108,7 +108,10 @@
     }
     
     #ShowImg {
-        height: 280px;
+        height: 250px;
+        width: 300px;
+        margin-left: 50px;
+        margin-top: 20px;
     }
     /* #ShowDiv {
         height: 605px;

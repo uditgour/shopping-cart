@@ -83,15 +83,21 @@ router.get("/user/:id/:oid/:pid/plus", async(req, res) => {
             q = item.quantity;
         }
     }
-    await User.findByIdAndUpdate(req.params.id, { $pull: { cart: { _id: req.params.oid } } });
-    const product = await Product.findById(req.params.pid);
-    const prod = {
-        pid: product,
-        quantity: q + 1
+    if (q < 5) {
+        await User.findByIdAndUpdate(req.params.id, { $pull: { cart: { _id: req.params.oid } } });
+        const product = await Product.findById(req.params.pid);
+        const prod = {
+            pid: product,
+            quantity: q + 1
+        }
+        user.cart.push(prod);
+        await user.save();
+        res.redirect(`/user/${req.params.id}/cart`);
+    } else {
+        res.redirect(`/user/${req.params.id}/cart`);
     }
-    user.cart.push(prod);
-    await user.save();
-    res.redirect(`/user/${req.params.id}/cart`);
+
+
 });
 
 router.get("/user/:id/:oid/:pid/minus", async(req, res) => {
@@ -102,16 +108,21 @@ router.get("/user/:id/:oid/:pid/minus", async(req, res) => {
             q = item.quantity;
         }
     }
-    const produc = await Product.findById(req.params.pid);
-    await User.findByIdAndUpdate(req.params.id, { $pull: { cart: { _id: req.params.oid } } });
-    const product = await Product.findById(req.params.pid);
-    const prod = {
-        pid: produc,
-        quantity: q - 1
+    if (q > 1) {
+        const produc = await Product.findById(req.params.pid);
+        await User.findByIdAndUpdate(req.params.id, { $pull: { cart: { _id: req.params.oid } } });
+        const product = await Product.findById(req.params.pid);
+        const prod = {
+            pid: produc,
+            quantity: q - 1
+        }
+        user.cart.push(prod);
+        await user.save();
+        res.redirect(`/user/${req.params.id}/cart`);
+    } else {
+        res.redirect(`/user/${req.params.id}/cart`);
     }
-    user.cart.push(prod);
-    await user.save();
-    res.redirect(`/user/${req.params.id}/cart`);
+
 });
 
 

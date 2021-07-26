@@ -105,12 +105,12 @@
 
                                             <div class="col-9">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5 form-control" type="password" name="password" required>
-
+                                                    <input class="input--style-5 form-control" type="password" name="password" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$" required>
                                                     <div class="invalid-feedback">
-                                                        must be 8
+                                                        Password must be at least 8 characters, no more than 20 characters, and must include at least one upper case letter, one lower case letter, and one numeric digit.
                                                     </div>
                                                 </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -137,6 +137,6 @@
                 </div>
             </div>
         </div>
-        <!-- pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" -->
+
 
         <%- include("../partials/footer")%>

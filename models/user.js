@@ -4,7 +4,8 @@ const PassportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new mongoose.Schema({
     email: {
-        type: String
+        type: String,
+        unique: true
     },
     cart: [{
         pid: {
@@ -20,7 +21,8 @@ const userSchema = new mongoose.Schema({
         type: String
     },
     phone: {
-        type: Number
+        type: Number,
+        unique: true
     },
     name: {
         type: String

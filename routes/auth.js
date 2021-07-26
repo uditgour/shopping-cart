@@ -8,6 +8,7 @@ let mail;
 
 router.get('/register', async(req, res) => {
     res.render('auth/signup');
+
 })
 
 router.post('/register', async(req, res) => {
@@ -20,9 +21,24 @@ router.post('/register', async(req, res) => {
             name: `${req.body.first_name} ${req.body.last_name}`
 
         });
-        const newUser = await User.register(user, req.body.password);
-        req.flash('success', 'Registered Successfully');
-        res.redirect('/login');
+        mail = req.body.email;
+        const us = await User.find({ username: req.body.username });
+        if (us.length == 0) {
+            const newUser = await User.register(user, req.body.password, function(err, user) {
+                if (err) {
+                    req.flash('error', 'Phone number / email id Already Registered');
+                    res.redirect("/register");
+                } else {
+                    req.flash('success', 'Registered Successfully');
+                    res.redirect('/login');
+                }
+            });
+
+        } else {
+            req.flash('error', 'User Name Already Taken');
+            res.redirect("/register");
+        }
+
     } catch (e) {
         req.flash('error', e.message)
     }
