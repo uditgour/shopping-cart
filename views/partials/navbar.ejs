@@ -1,4 +1,4 @@
-<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: rgb(55, 205, 243);">
+<nav class="navbar fixed-top navbar-expand-lg navbar-light" style="background-color: #e9ecef">
     <div class="container-fluid ">
         <a class="navbar-brand " href="/products "><i class="fas fa-shopping-basket " style="margin-right: 10px;font-size: 1.7rem; "></i>Shopping Cart</a>
         <button class="navbar-toggler " type="button " data-bs-toggle="collapse " data-bs-target="#navbarTogglerDemo02 " aria-controls="navbarTogglerDemo02 " aria-expanded="false " aria-label="Toggle navigation ">
@@ -51,8 +51,14 @@
 
                         <%if(currentUser){ if(currentUser.usertype=="customer"){%>
                             <a href="/user/<%=currentUser._id%>/cart" class="nav-link active ">
-                                <h4 class="fas fa-shopping-cart "></h4>
-                                <sup><span class="badge bg-danger "><%=currentUser.cart.length%></span></sup>
+                                <%let q=0;%>
+                                    <%for(let item of currentUser.cart)
+                                    {
+                                    q=q+item.quantity;
+                                    }
+                                    %>
+                                        <h4 class="fas fa-shopping-cart "></h4>
+                                        <sup><span class="badge bg-danger "><%=q%></span></sup>
                             </a>
                             <%}}%>
                                 <a href="/logout " class="nav-link active ">

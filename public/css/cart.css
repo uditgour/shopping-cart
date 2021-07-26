@@ -14,6 +14,12 @@
     border-radius: 15px;
 }
 
+a {
+    padding: 0 1vh;
+    text-decoration: none;
+    color: black;
+}
+
 #cartTitle {
     padding-top: 30px;
     padding-left: 30px;

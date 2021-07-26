@@ -1,0 +1,47 @@
+<%- include("../partials/header")%>
+    <%- include("../partials/navbar")%>
+
+        <div class="page-wrapper p-t-45 p-b-50" id="log">
+            <div class="wrapper wrapper--w790">
+                <div class="card card-5">
+                    <div style="font-size: 25px; width: 70%;text-align: center;margin-left: 100px;margin-top: 50px;">
+                        Enter OTP
+                    </div>
+
+                    <div class="card-body">
+                        <form class="validated-form" action="/otp" method="POST" novalidate>
+                            <%- include("../partials/flash")%>
+
+                                <div class="form-row m-b-55">
+                                    <div class="name">OTP</div>
+                                    <div class="value">
+                                        <div class="row row-refine">
+
+                                            <div class="col-9">
+                                                <div class="input-group-desc">
+                                                    <input class="input--style-5 form-control" type="text" name="otp" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide OTP.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <button class="btn1 btn--pill btn--blue" type="submit">Submit</button>
+                                </div>
+                                <br>
+                                <br>
+                                <a href="/login">Login</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+        </script>
+
+        <%- include("../partials/footer")%>

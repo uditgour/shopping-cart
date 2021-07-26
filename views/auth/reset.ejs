@@ -4,58 +4,58 @@
         <div class="page-wrapper p-t-45 p-b-50" id="log">
             <div class="wrapper wrapper--w790">
                 <div class="card card-5">
-                    <div class="card-heading">
-                        <h2 class="title">Login</h2>
+                    <div style="font-size: 25px; width: 70%;text-align: center;margin-left: 100px;margin-top: 50px;">
+                        RESET PASSWORD
                     </div>
+
                     <div class="card-body">
-                        <form class="validated-form" action="/login" method="POST" novalidate>
+                        <form class="validated-form" action="/reset" method="POST" novalidate>
                             <%- include("../partials/flash")%>
 
                                 <div class="form-row m-b-55">
-                                    <div class="name">User Name</div>
+                                    <div class="name">Enter Password</div>
                                     <div class="value">
                                         <div class="row row-refine">
 
                                             <div class="col-9">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="text" name="username">
-                                                    <label class="label--desc">User Name</label>
+                                                    <input class="input--style-5 form-control" type="text" name="pass1" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide pasword.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-row m-b-55">
-                                    <div class="name">Password</div>
+                                    <div class="name">Re-Enter Password</div>
                                     <div class="value">
                                         <div class="row row-refine">
 
                                             <div class="col-9">
                                                 <div class="input-group-desc">
-                                                    <input class="input--style-5" type="password" name="password">
-                                                    <label class="label--desc">Password</label>
+                                                    <input class="input--style-5 form-control" type="text" name="pass2" required>
+                                                    <div class="invalid-feedback">
+                                                        Please Provide Password.
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
 
                                 <div>
-                                    <button class="btn1 btn--pill btn--blue" type="submit">Login</button>
+                                    <button class="btn1 btn--pill btn--blue" type="submit">Submit</button>
                                 </div>
                                 <br>
                                 <br>
-                                <a href="/register">SignUp?</a>
-                                <a href="/mail" style="margin-left: 300px;">
-                                    Forgot Password
-                                </a>
+                                <a href="/login">Login</a>
+
                         </form>
                     </div>
                 </div>
             </div>
         </div>
 
-
-        <%-include("../partials/footer")%>
+        <%- include("../partials/footer")%>

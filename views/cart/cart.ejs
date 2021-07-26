@@ -5,31 +5,41 @@
 
             <%- include("../partials/flash")%>
                 <%if(userCart.length!=0){%>
-                    <h6 class="display-6">My Cart</h6>
+                    <h6 class="display-6 mb-3">My Cart</h6>
 
                     <div class="row">
-                        <div class="col-lg-8">
-                            <%for(let item of userCart){%>
-                                <div class="card mb-3" style="width: 90%;">
-                                    <div class="row g-0">
-                                        <div class="col-md-4">
-                                            <img style="width: 200px;" src="<%=item.img%>" alt="...">
+                        <div class="col-lg-8" style="border-radius: 20px;">
+                            <%for(let item of userCart.sort()){%>
+                                <div class="card mb-3" style="width:90%; border-radius: 10px;">
+                                    <div class="row g-0" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
+                                        <div class="col-md-4 ">
+                                            <img style="width: 240px;height: 220px;" src="<%=item.pid[0].img%>" alt="...">
                                         </div>
-                                        <div class="col-md-8">
-                                            <div class="card-body">
+                                        <div class="col-md-8 ">
+                                            <div class="card-body" style="border-radius:20px;">
+                                                <h3 class="card-title">
+                                                    <%=item.pid[0].name%>
+                                                </h3>
+
+                                                <h4 class="card-title mt-3 mb-3">
+                                                    &#8377;
+                                                    <%=item.pid[0].price%>
+                                                </h4>
+
                                                 <h5 class="card-title">
-                                                    <%=item.name%>
+                                                    <div>Quantity</div>
+                                                    <a href="<%=item._id%>/<%=item.pid[0]._id%>/minus" id="mi" class="mt-2 btn btn-light btn-circle btn-sm">-</a>
+                                                    <div id="va" class="mt-2 btn btn-light btn-circle btn-sm" min="1">
+                                                        <%=item.quantity%>
+                                                    </div>
+                                                    <a href="<%=item._id%>/<%=item.pid[0]._id%>/plus" id="pl" class="mt-2 btn btn-light btn-circle btn-sm">+</a>
                                                 </h5>
 
-                                                <h7 class="card-title">
-                                                    <%=item.price%>
-                                                </h7>
 
-                                                <form action="/user/<%=currentUser._id%>/cart/<%=item._id%>?_method=DELETE" method="post">
-                                                    <button class="btn btn-sm btn-danger">remove</button>
+
+                                                <form action="/user/<%=currentUser._id%>/cart/<%=item.pid[0]._id%>/<%=item._id%>?_method=DELETE" method="post">
+                                                    <button class="btn btn-sm btn-danger mt-2">Remove</button>
                                                 </form>
-
-
                                             </div>
                                         </div>
                                     </div>
@@ -46,8 +56,8 @@
 
                                     <%for(let item of userCart){%>
                                         <li class="list-group-item">
-                                            <%=item.name%> - <strong>&#8377; <%=item.price%></strong></li>
-                                        <%totalAmount+=item.price%>
+                                            <%=item.pid[0].name%> - <strong>&#8377; <%=item.pid[0].price%>&nbsp;*&nbsp;<%=item.quantity%></strong></li>
+                                        <%totalAmount+=item.pid[0].price*item.quantity%>
                                             <%}%>
 
                                 </ul>
@@ -74,6 +84,4 @@
                         <%} %>
 
         </div>
-
-
         <%- include("../partials/footer")%>

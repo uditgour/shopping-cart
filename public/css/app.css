@@ -1,9 +1,7 @@
     body {
-        background: -webkit-gradient(linear, left bottom, left top, from(#a18cd1), to(#fbc2eb));
-        background: -webkit-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
-        background: -moz-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
-        background: -o-linear-gradient(bottom, #a18cd1 0%, #fbc2eb 100%);
-        background: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+        background-image: url("../image/dave-hoefler-AJXKxuRrUcg-unsplash.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
     }
     
     .products {
