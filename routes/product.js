@@ -123,7 +123,7 @@ router.post('/products/:id/review', isLoggedIn, async(req, res) => {
     try {
         const product = await Product.findById(req.params.id);
         const review = new Review({
-            user: req.user.username,
+            user: req.user.name,
             ...req.body
         });
 
