@@ -136,7 +136,7 @@ router.post('/products/:id/review', isLoggedIn, async(req, res) => {
         res.redirect(`/products/${req.params.id}`);
     } catch (e) {
         console.log(e.message);
-        req.flash('error', 'Cannot add review to this Product');
+        req.flash('error', 'Cannot add review to this Products');
         res.redirect('/error');
     }
 
