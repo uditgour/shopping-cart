@@ -91,9 +91,14 @@
                                                 Rated:
                                                 <%=review.rating%> stars
                                             </p>
-                                            <p class="card-text">
-                                                <%=review.comment%>
-                                            </p>
+                                            <%if(review.username==currentUser.username){%>
+                                                <a href="/review/<%=review._id%>/<%=product._id%>/delete%>" style="color: red; margin-left: 500px;">Remove</a>
+                                                <%}%>
+
+
+                                                    <p class="card-text">
+                                                        <%=review.comment%>
+                                                    </p>
                                         </div>
                                     </div>
 
@@ -101,7 +106,37 @@
                             </div>
 
                         </div>
-                        <%}}%>
+                        <%}else{%>
+                            <div class="col-lg-6">
+                                <div class="mb-3 mt-3">
+                                    <h1>Reviews on your product</h1>
+                                    <%for(let review of product.reviews){%>
+
+                                        <div class="card mb-3">
+                                            <div class="card-header">
+                                                <%=review.user%>
+                                            </div>
+                                            <div class="card-body">
+
+                                                <p class="starability-result" data-rating="<%=review.rating%>">
+                                                    Rated:
+                                                    <%=review.rating%> stars
+                                                </p>
+                                                <%if(review.username==currentUser.username){%>
+                                                    <a href="/review/<%=review._id%>/<%=product._id%>/delete%>" style="color: red; margin-left: 500px;">Remove</a>
+                                                    <%}%>
+
+
+                                                        <p class="card-text">
+                                                            <%=review.comment%>
+                                                        </p>
+                                            </div>
+                                        </div>
+
+                                        <%}%>
+                                </div>
+                            </div>
+                            <%}}%>
 
 
 

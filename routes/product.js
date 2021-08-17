@@ -124,6 +124,7 @@ router.post('/products/:id/review', isLoggedIn, async(req, res) => {
         const product = await Product.findById(req.params.id);
         const review = new Review({
             user: req.user.name,
+            username: req.user.username,
             ...req.body
         });
 
@@ -139,11 +140,14 @@ router.post('/products/:id/review', isLoggedIn, async(req, res) => {
         req.flash('error', 'Cannot add review to this Products');
         res.redirect('/error');
     }
-
 })
 
 
-
+router.get('/review/:rid/:pid/delete', async(req, res) => {
+    const review_id = req.params.rid;
+    await Review.findByIdAndDelete(review_id);
+    res.redirect(`/products/${req.params.pid}`);
+})
 
 router.get('/error', (req, res) => {
     res.status(404).render('error');

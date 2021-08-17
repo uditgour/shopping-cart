@@ -5,7 +5,9 @@ const reviewSchema = new mongoose.Schema({
     user: {
         type: String
     },
-
+    username: {
+        type: String
+    },
     rating: {
         type: Number,
         min: 0,
